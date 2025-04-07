@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 517731454997.dkr.ecr.us-east-1.amazonaws.com/nginx
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...          
+      # - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
+      - docker tag nginx:latest 517731454997.dkr.ecr.us-east-1.amazonaws.com/nginx:latest  
+      - IMAGE_URI=517731454997.dkr.ecr.us-east-1.amazonaws.com/nginx:latest   
+      - echo IMAGE_URI
+
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push 517731454997.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
+      - printf '{"ImageURI":"%s"}' "$(echo ${IMAGE_URI})" > imageDetail.json
+
+artifacts:
+  files:
+    - imageDetail.json
