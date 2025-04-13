@@ -2,7 +2,7 @@
     "executionRoleArn": "arn:aws:iam::517731454997:role/ecsTaskExecutionRole",
     "containerDefinitions": [
         {
-            "name": "sample-website",
+            "name": "flask-auth-app",
             "image": "<IMAGE1_NAME>",
             "essential": true,
             "portMappings": [
@@ -20,5 +20,5 @@
     "networkMode": "awsvpc",
     "cpu": "256",
     "memory": "512",
-    "family": "ecs-demo"
+    "family": "flask-auth-app-anycompany"
 }
