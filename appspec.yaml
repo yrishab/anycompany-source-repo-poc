@@ -7,5 +7,5 @@ Resources:
       Properties:
         TaskDefinition: <TASK_DEFINITION>
         LoadBalancerInfo:
-          ContainerName: "sample-website"
+          ContainerName: "flask-auth-app"
           ContainerPort: 80
