@@ -4,22 +4,24 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 517731454997.dkr.ecr.us-east-1.amazonaws.com/nginx
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 517731454997.dkr.ecr.us-east-1.amazonaws.com
+      # - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 517731454997.dkr.ecr.us-east-1.amazonaws.com/nginx
   build:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      # - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
-      - docker pull nginx
-      - docker tag nginx:latest 517731454997.dkr.ecr.us-east-1.amazonaws.com/nginx:latest  
-      - IMAGE_URI=517731454997.dkr.ecr.us-east-1.amazonaws.com/nginx:latest   
+      - docker build -t ab3-anycompany-poc .
+      # - docker pull nginx
+      # - docker tag nginx:latest 517731454997.dkr.ecr.us-east-1.amazonaws.com/nginx:latest  
+      - docker tag ab3-anycompany-poc:latest 517731454997.dkr.ecr.us-east-1.amazonaws.com/ab3-anycompany-poc:latest
+      - IMAGE_URI=517731454997.dkr.ecr.us-east-1.amazonaws.com/ab3-anycompany-poc:latest   
       - echo IMAGE_URI
 
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 517731454997.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
+      - docker push 517731454997.dkr.ecr.us-east-1.amazonaws.com/ab3-anycompany-poc:latest
       - printf '{"ImageURI":"%s"}' "$(echo ${IMAGE_URI})" > imageDetail.json
 
 artifacts:
