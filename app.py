@@ -250,7 +250,7 @@ HOME_PAGE = '''
 <body>
     <div class="container">
         <h1>Welcome, {{ username }}!</h1>
-        <button onclick="getColor()" class="color-button">Get Random Color: Version 2</button>
+        <button onclick="getColor()" class="color-button">Get Random Color: Version [Green]</button>
         <div id="colorDisplay" class="color-display"></div>
         <button onclick="return handleLogout()" class="color-button">Logout</button>
     </div>
