@@ -249,8 +249,8 @@ HOME_PAGE = '''
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to Blue Env, {{ username }}!</h1>
-        <button onclick="getColor()" class="color-button">Get Random Color: Version [V1:Blue]</button>
+        <h1>Welcome to Green Env, {{ username }}!</h1>
+        <button onclick="getColor()" class="color-button">Get Random Color: Version [V2:Green]</button>
         <div id="colorDisplay" class="color-display"></div>
         <button onclick="return handleLogout()" class="color-button">Logout</button>
     </div>
